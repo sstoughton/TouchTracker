@@ -14,6 +14,8 @@
 		A0341DFF225E51FB00680C4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0341DFD225E51FB00680C4C /* LaunchScreen.storyboard */; };
 		A0341E0A225E51FB00680C4C /* TouchTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0341E09225E51FB00680C4C /* TouchTrackerTests.swift */; };
 		A0341E15225E51FB00680C4C /* TouchTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0341E14225E51FB00680C4C /* TouchTrackerUITests.swift */; };
+		A0341E23225E521000680C4C /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0341E22225E521000680C4C /* Line.swift */; };
+		A0341E25225E526400680C4C /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0341E24225E526400680C4C /* DrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		A0341E10225E51FB00680C4C /* TouchTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0341E14225E51FB00680C4C /* TouchTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchTrackerUITests.swift; sourceTree = "<group>"; };
 		A0341E16225E51FB00680C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0341E22225E521000680C4C /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		A0341E24225E526400680C4C /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				A0341DF4225E51FB00680C4C /* AppDelegate.swift */,
+				A0341E22225E521000680C4C /* Line.swift */,
+				A0341E24225E526400680C4C /* DrawView.swift */,
 				A0341DF6225E51FB00680C4C /* ViewController.swift */,
 				A0341DF8225E51FB00680C4C /* Main.storyboard */,
 				A0341DFB225E51FB00680C4C /* Assets.xcassets */,
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0341E23225E521000680C4C /* Line.swift in Sources */,
 				A0341DF7225E51FB00680C4C /* ViewController.swift in Sources */,
+				A0341E25225E526400680C4C /* DrawView.swift in Sources */,
 				A0341DF5225E51FB00680C4C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,9 +435,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BN5U5ZTJT;
 				INFOPLIST_FILE = TouchTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HPU.TouchTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sstoughton.TouchTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -441,9 +450,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BN5U5ZTJT;
 				INFOPLIST_FILE = TouchTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HPU.TouchTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sstoughton.TouchTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
