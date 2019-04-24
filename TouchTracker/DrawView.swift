@@ -20,11 +20,34 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             }
         }
     }
+    
+    var longPressRecognizer: UILongPressGestureRecognizer!
+    
+    
+    @IBInspectable var finishedLineColor: UIColor = UIColor.black {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+   
+    @IBInspectable var currentLineColor: UIColor = UIColor.red {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    @IBInspectable var lineThickness: CGFloat = 10 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    
     var moveRecognizer: UIPanGestureRecognizer!
     
     func stroke(_ line: Line) {
         let path = UIBezierPath()
-        path.lineWidth = 10
+        path.lineWidth = lineThickness
         path.lineCapStyle = .round
         
         path.move(to: line.begin)
@@ -33,22 +56,15 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     }
     
     override func draw(_ rect: CGRect) {
-        //Draw finished lines in black
-        UIColor.black.setStroke()
         for line in finishedLines {
-            stroke(line)
-        }
-
-    // draw current lines in red
-        UIColor.red.setStroke()
-        for (_, line) in currentLines {
+            line.color.setStroke()    // Use color by angle
             stroke(line)
         }
         
-        if let index = selectedLineIndex {
-            UIColor.green.setStroke()
-            let selectedLine = finishedLines[index]
-            stroke(selectedLine)
+        currentLineColor.setStroke()
+        for (_, line) in currentLines {
+            line.color.setStroke()    // Use color by angle
+            stroke(line)
         }
     }
     
@@ -181,6 +197,9 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     
     @objc func moveLine(_ gestureRecognizer: UIPanGestureRecognizer) {
         print("Recognized a pan")
+        guard longPressRecognizer.state == .changed || longPressRecognizer.state == .ended else {
+            return
+        }
         
         //if a line is selected
         if let index = selectedLineIndex {
@@ -205,7 +224,9 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             //if no line is selected, do not to anything
             return
         }
+        
     }
+    
     
     func gestureReceognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -224,7 +245,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         tapRecognizer.require(toFail: doubleTapRecognizer)
         addGestureRecognizer(tapRecognizer)
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(DrawView.longPress(_:)))
+        longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(DrawView.longPress(_:)))
         addGestureRecognizer(longPressRecognizer)
         
         moveRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DrawView.moveLine(_:)))
